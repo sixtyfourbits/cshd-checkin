@@ -11,7 +11,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
   }
 
-  const seat = db.prepare('SELECT * FROM Seats WHERE id = ?').get(seat_id);
+  interface SeatRow { id: number; is_occupied: boolean; user_id: number | null; }
+  const seat = db.prepare('SELECT * FROM Seats WHERE id = ?').get(seat_id) as SeatRow;
 
   if (seat.is_occupied) {
     return NextResponse.json({ error: 'Seat is already occupied' }, { status: 409 });
