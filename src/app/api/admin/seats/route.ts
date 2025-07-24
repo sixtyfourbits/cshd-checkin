@@ -1,14 +1,12 @@
+
 import { NextRequest, NextResponse } from 'next/server';
-import { getIronSession } from 'iron-session';
-import { cookies } from 'next/headers';
 import Database from 'better-sqlite3';
-import { sessionOptions, SessionData } from '@/lib/session';
+import { isAdmin } from '@/lib/session';
 
 const db = new Database('database.db');
 
 export async function GET(req: NextRequest) {
-  const session = await getIronSession<SessionData>(cookies() as any, sessionOptions);
-  if (!session.isAdmin) {
+  if (!await isAdmin()) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

@@ -1,23 +1,27 @@
-import { getIronSession, IronSession, SessionOptions } from 'iron-session';
-import { cookies } from 'next/headers';
+// src/lib/session.ts - Simplified session logic for debugging
 
-export const sessionOptions: SessionOptions = {
-  password: process.env.SESSION_SECRET as string,
-  cookieName: 'cshd-session',
-  cookieOptions: {
-    secure: process.env.NODE_ENV === 'production',
-  },
-};
+import { cookies } from 'next/headers';
+import fs from 'fs/promises';
+import path from 'path';
 
 export interface SessionData {
   isAdmin: boolean;
 }
 
-export async function getSession() {
-  return await getIronSession<SessionData>(await cookies(), sessionOptions);
-}
+export async function isAdmin(): Promise<boolean> {
+  const adminPasswordFilePath = path.join(process.cwd(), 'admin_password.txt');
+  let storedPassword = '';
+  try {
+    storedPassword = (await fs.readFile(adminPasswordFilePath, 'utf-8')).trim();
+  } catch (error) {
+    console.error('Failed to read admin_password.txt', error);
+    return false;
+  }
 
-export async function isAdmin() {
-  const session = await getSession();
-  return session.isAdmin === true;
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get('admin_session');
+  if (sessionCookie && sessionCookie.value === storedPassword) {
+    return true;
+  }
+  return false;
 }

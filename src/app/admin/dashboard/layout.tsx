@@ -1,13 +1,11 @@
+
 import { PropsWithChildren } from 'react';
 import { redirect } from 'next/navigation';
 import AdminNavbar from '@/components/AdminNavbar';
-import { getIronSession } from 'iron-session';
-import { cookies } from 'next/headers';
-import { sessionOptions, SessionData } from '@/lib/session';
+import { isAdmin } from '@/lib/session';
 
 export default async function AdminLayout({ children }: PropsWithChildren) {
-  const session = await getIronSession<SessionData>(cookies() as any, sessionOptions);
-  if (!session.isAdmin) {
+  if (!await isAdmin()) {
     redirect('/admin/login');
   }
 
