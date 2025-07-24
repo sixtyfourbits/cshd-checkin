@@ -1,7 +1,6 @@
 {
-  "/api/seats/[seat_id]/route": "app/api/seats/[seat_id]/route.js",
-  "/api/check-out/route": "app/api/check-out/route.js",
   "/api/admin/seats/route": "app/api/admin/seats/route.js",
+  "/api/seats/[seat_id]/route": "app/api/seats/[seat_id]/route.js",
   "/page": "app/page.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js"
 }
