@@ -1,6 +1,14 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/admin/logs/route": "app/api/admin/logs/route.js",
   "/api/admin/seats/route": "app/api/admin/seats/route.js",
+  "/api/admin/logout/route": "app/api/admin/logout/route.js",
+  "/api/admin/login/route": "app/api/admin/login/route.js",
   "/api/seats/[seat_id]/route": "app/api/seats/[seat_id]/route.js",
+  "/api/check-in/route": "app/api/check-in/route.js",
+  "/api/check-out/route": "app/api/check-out/route.js",
   "/page": "app/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js"
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/dashboard/logs/page": "app/admin/dashboard/logs/page.js"
 }
