@@ -1,15 +1,20 @@
 {
   "pages": {
-    "/api/admin/seats/route": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/admin/seats/route.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
+    ],
+    "/api/seats/[seat_id]/route": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/seats/[seat_id]/route.js"
     ],
     "/admin/dashboard/layout": [
       "static/chunks/webpack.js",
@@ -21,15 +26,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/admin/dashboard/page.js"
     ],
-    "/page": [
+    "/api/admin/seats/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/api/admin/seats/route.js"
     ],
-    "/api/seats/[seat_id]/route": [
+    "/api/check-out/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/seats/[seat_id]/route.js"
+      "static/chunks/app/api/check-out/route.js"
     ]
   }
 }
