@@ -6,7 +6,7 @@ import { cookies } from 'next/headers';
 import { sessionOptions, SessionData } from '@/lib/session';
 
 export default async function AdminLayout({ children }: PropsWithChildren) {
-  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+  const session = await getIronSession<SessionData>(cookies() as any, sessionOptions);
   if (!session.isAdmin) {
     redirect('/admin/login');
   }

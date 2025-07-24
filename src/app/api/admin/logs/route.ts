@@ -7,7 +7,7 @@ import { sessionOptions, SessionData } from '@/lib/session';
 const db = new Database('database.db');
 
 export async function GET(req: NextRequest) {
-  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+  const session = await getIronSession<SessionData>(cookies() as any, sessionOptions);
   if (!session.isAdmin) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }

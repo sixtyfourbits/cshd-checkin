@@ -8,7 +8,7 @@ import { sessionOptions, SessionData } from '@/lib/session';
 
 export async function POST(req: NextRequest) {
   const { password } = await req.json();
-  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+  const session = await getIronSession<SessionData>(cookies() as any, sessionOptions);
 
   const passwordFilePath = path.join(process.cwd(), 'admin_password.txt');
   const adminPassword = await fs.readFile(passwordFilePath, 'utf-8');
