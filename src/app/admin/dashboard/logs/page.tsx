@@ -40,7 +40,7 @@ export default function LogsPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">출입 기록</h1>
+      <h1 className="text-3xl font-bold mb-6">청송학당 출입 기록</h1>
       <input
         type="text"
         placeholder="이름으로 검색..."

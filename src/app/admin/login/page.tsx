@@ -29,7 +29,7 @@ export default function LoginPage() {
   return (
     <div className="flex items-center justify-center h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">
-        <h1 className="text-2xl font-bold mb-6 text-center">관리자 로그인</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">청송학당 관리자 로그인</h1>
         <input
           type="password"
           value={password}

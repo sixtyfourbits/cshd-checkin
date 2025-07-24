@@ -60,7 +60,7 @@ function CheckInForm() {
     if (res.ok) {
       setIsCheckedIn(true);
       localStorage.setItem(`seat-${seat_id}`, 'occupied');
-      alert('출석 체크 완료!');
+      alert('청송학당 입실 완료!');
     } else {
       const { error } = await res.json();
       setError(error);
@@ -109,13 +109,22 @@ function CheckInForm() {
       ) : (
         <form onSubmit={handleCheckIn}>
           <div className="grid grid-cols-2 gap-4 mb-4">
-            <input type="number" name="grade" placeholder="학년" onChange={handleInputChange} className="p-2 border rounded-md" required />
-            <input type="number" name="class_number" placeholder="반" onChange={handleInputChange} className="p-2 border rounded-md" required />
-            <input type="number" name="student_number" placeholder="번호" onChange={handleInputChange} className="p-2 border rounded-md" required />
+            <select name="grade" onChange={handleInputChange} className="p-2 border rounded-md" required>
+              <option value="">학년</option>
+              {[1, 2, 3].map(g => <option key={g} value={g}>{g}학년</option>)}
+            </select>
+            <select name="class_number" onChange={handleInputChange} className="p-2 border rounded-md" required>
+              <option value="">반</option>
+              {[...Array(10)].map((_, i) => <option key={i + 1} value={i + 1}>{i + 1}반</option>)}
+            </select>
+            <select name="student_number" onChange={handleInputChange} className="p-2 border rounded-md" required>
+              <option value="">번호</option>
+              {[...Array(35)].map((_, i) => <option key={i + 1} value={i + 1}>{i + 1}번</option>)}
+            </select>
           </div>
           <input type="text" name="name" placeholder="이름" onChange={handleInputChange} className="w-full p-2 border rounded-md mb-4" required />
           <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
-            출석 체크
+            입실하기
           </button>
         </form>
       )}

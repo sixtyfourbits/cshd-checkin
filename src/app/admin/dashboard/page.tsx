@@ -24,7 +24,7 @@ export default function AdminPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-6">실시간 좌석 현황</h1>
+      <h1 className="text-3xl font-bold mb-6">청송학당 실시간 좌석 현황</h1>
       <SeatGrid seats={seats} />
     </div>
   );
